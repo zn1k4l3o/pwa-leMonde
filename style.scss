@@ -1,0 +1,18 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100vw;
+    height: 300px;
+    padding:16px;
+
+    img {
+        height: 100%;
+    }
+}
