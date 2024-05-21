@@ -1,18 +1,8 @@
+section {
+  width: 900px;
+  margin: 0 auto;
 
-html, body {
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width:100vw;
-    height: 300px;
-    padding:16px;
-
-    img {
-        height: 100%;
-    }
+  hr {
+    border-top: 1px solid grey;
+  }
 }

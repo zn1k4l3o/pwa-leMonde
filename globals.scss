@@ -1,0 +1,43 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(245, 246, 248);
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100px;
+  box-sizing: border-box;
+  border-bottom: 2px solid darkblue;
+  padding: 8px;
+  background-color: white;
+
+  img {
+    height: 100%;
+  }
+}
+
+nav {
+  display: flex;
+  width: 900px;
+  margin: 0 auto;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px 0px 8px 0px;
+  background-color: white;
+
+  a {
+    margin-right: 40px;
+    text-decoration: none;
+    color: black;
+    align-content: center;
+
+    &:hover {
+      color: darkblue;
+    }
+  }
+}
