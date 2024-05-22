@@ -1,0 +1,39 @@
+section {
+  width: 900px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+hr {
+  border-top: 1px solid grey;
+}
+
+.articles {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.news {
+  width: 280px;
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+}
+
+.newsImg {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+
+h4 {
+  font-size: 16;
+}
+p {
+  font-size: 14;
+}

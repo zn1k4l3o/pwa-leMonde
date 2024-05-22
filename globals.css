@@ -15,10 +15,10 @@ header {
   border-bottom: 2px solid darkblue;
   padding: 8px;
   background-color: white;
+}
 
-  img {
-    height: 100%;
-  }
+.headerPhoto {
+  height: 100%;
 }
 
 nav {
@@ -29,15 +29,14 @@ nav {
   align-items: center;
   padding: 8px 0px 8px 0px;
   background-color: white;
+}
 
-  a {
-    margin-right: 40px;
-    text-decoration: none;
-    color: black;
-    align-content: center;
-
-    &:hover {
-      color: darkblue;
-    }
-  }
+.link {
+  margin-right: 40px;
+  text-decoration: none;
+  color: black;
+  align-content: center;
+}
+.link:hover {
+  color: darkblue;
 }
