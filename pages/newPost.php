@@ -1,57 +1,73 @@
 <?php
-if (isset($_POST['title'])) {
+include '../connect.php';
+define('UPLPATH', 'storage/images/');
+?>
+<?php
+if (isset($_POST['title']))
+{
     $konekcija = mysqli_connect("localhost", "root", "", "lemonde") or die("Nema konekcije na server!");
-    $title = $_POST['title'];
-    $short = $_POST['shortDescription'];
-    $long = $_POST['longDescription'];
+    $title   = $_POST['title'];
+    $short   = $_POST['shortDescription'];
+    $long    = $_POST['longDescription'];
     $section = $_POST['section'];
 
-    $photo = null;
-    $type = null;
-    if ($_FILES != null) {
-        $file = $_FILES["photo"]["tmp_name"];   
+    //$photo = null;
+    //$type  = null;
+    $targetPhotoDir = null;
+    if ($_FILES != null)
+    {
+        $file = $_FILES["photo"]["tmp_name"];
 
-        if(isset($file)){
-            $image = addslashes(file_get_contents($_FILES['photo']['tmp_name']));
+        if (isset($file))
+        {
 
-            $image_name = addslashes($_FILES['photo']['name']);
+            //$image = file_get_contents($_FILES['photo']['tmp_name']);
+
+            //$image_name = addslashes($_FILES['photo']['name']);
 
             $image_size = getimagesize($_FILES['photo']['tmp_name']);
 
-            if($image_size==FALSE)
+            if ($image_size == FALSE)
                 echo "That's not an image.";
             else
             {
+                /*
                 $photo = $image;
-                $type=$_FILES['photo']['type'];
+                $type  = $_FILES['photo']['type'];
+                */
+                $targetPhotoDir = UPLPATH . $_FILES['photo']['name'];
+                move_uploaded_file($_FILES['photo']['tmp_name'], "../$targetPhotoDir");
+
             }
         }
     }
 
-    $query = "INSERT INTO posts (title, shortDescription, longDescription, photo, photoType, section) VALUES ('$title', '$short', '$long', '$photo', '$type', '$section')";
+    $query  = "INSERT INTO posts (title, shortDescription, longDescription, targetPhotoDir, section) VALUES ('$title', '$short', '$long', '$targetPhotoDir', '$section')";
     $result = mysqli_query($konekcija, $query);
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New post</title>
 </head>
+
 <body>
     <form enctype="multipart/form-data" action="newPost.php" method="POST">
         <label for="title">Title</label>
         <br />
-        <input name="title" required/>
+        <input name="title" required />
         <br />
         <label for="photo">Image</label>
         <br />
-        <input name="photo" type="file"/>
+        <input name="photo" type="file" />
         <br />
         <label for="shortDescription">Short description</label>
         <br />
-        <input name="shortDescription" type="text" required/>
+        <input name="shortDescription" type="text" required />
         <br />
         <label for="longDescription">Long description</label>
         <br />
@@ -62,7 +78,8 @@ if (isset($_POST['title'])) {
             <option value="Sport">Sport</option>
             <option value="Administration">Administration</option>
         </select>
-        <input name="submit" type="submit" value="Post" /> 
+        <input name="submit" type="submit" value="Post" />
     </form>
 </body>
+
 </html>
