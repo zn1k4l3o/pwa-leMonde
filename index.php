@@ -40,15 +40,19 @@ $arrayAdministration = mysqli_query($connection, $query);
             <?php
             while ($row = mysqli_fetch_assoc($arrayPolitics))
             {
+                $id             = $row["id"];
                 $title          = $row['title'];
                 $short          = $row['shortDescription'];
                 $targetPhotoDir = $row['targetPhotoDir'];
 
-                echo "<article class='news'>
-                    <img src='$targetPhotoDir' class='newsImg'/>
-                    <h4>$title</h4>
-                    <p>$short</p>
-                </article>";
+                echo "
+                <a href='./pages/article.php?id=" . $id . "' >
+                    <article class='news'>
+                        <img src='$targetPhotoDir' class='newsImg'/>
+                        <h4>$title</h4>
+                        <p>$short</p>
+                    </article>
+                </a>";
             }
             ?>
         </div>
