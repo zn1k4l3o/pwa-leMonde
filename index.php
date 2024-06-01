@@ -24,15 +24,17 @@ $arrayAdministration = mysqli_query($connection, $query);
 
 <body>
     <header>
-        <img src="images/leMondeLogo.jpg" alt="Le Monde" title="Le Monde" class="headerPhoto">
+        <div class="top">
+            <img src="images/leMondeLogo.jpg" alt="Le Monde" title="Le Monde" class="headerPhoto">
+        </div>
+        <nav>
+            <a href="index.php" class="link">HOME</a>
+            <a href="#politique" class="link">POLITIKA</a>
+            <a href="#sport" class="link">SPORT</a>
+            <a href="pages/administration.php" class="link">ADMINISTRACIJA</a>
+            <a href="pages/newPost.php" class="link">NOVI ČLANAK</a>
+        </nav>
     </header>
-    <nav>
-        <a href="index.php" class="link">HOME</a>
-        <a href="#politique" class="link">POLITIKA</a>
-        <a href="#sport" class="link">SPORT</a>
-        <a href="#administracija" class="link">ADMINISTRACIJA</a>
-        <a href="pages/newPost.php" class="link">NOVI ČLANAK</a>
-    </nav>
     <section>
         <hr />
         <h2 id="politique">Politique</h2>
@@ -46,7 +48,7 @@ $arrayAdministration = mysqli_query($connection, $query);
                 $targetPhotoDir = $row['targetPhotoDir'];
 
                 echo "
-                <a href='./pages/article.php?id=" . $id . "' >
+                <a class='card' href='./pages/article.php?id=" . $id . "' >
                     <article class='news'>
                         <img src='$targetPhotoDir' class='newsImg'/>
                         <h4>$title</h4>
@@ -77,25 +79,6 @@ $arrayAdministration = mysqli_query($connection, $query);
             ?>
         </div>
     </section>
-    <!--
-    <section>
-        <hr/>
-        <h2 id="administracija">Administracija</h2>
-        <div class="articles">
-            <?php
-            for ($i = 0; $i < 5; $i++)
-            {
-                echo "<article class='news'>
-                    <img src='images/leMondeLogo.jpg' class='newsImg'/>
-                    <h4>Naslov</h4>
-                    <p>Paragraf</p>
-                </article>";
-            }
-            ?>
-        </div>
-        
-    </section>
-        -->
 </body>
 
 </html>

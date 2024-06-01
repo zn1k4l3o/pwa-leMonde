@@ -19,21 +19,37 @@ hr {
 }
 
 .news {
-  width: 280px;
-  height: 360px;
+  width: 260px;
+  height: 340px;
   display: flex;
   flex-direction: column;
+  border: 1px solid rgba(163, 163, 163, 0.73);
+  box-shadow: 0px 2px 4px 2px rgba(163, 163, 163, 0.73);
+  margin-bottom: 16px;
+  transition: 0.4s ease-in;
+}
+
+.news:hover {
+  transform: scale(100.5%) translateY(-4px);
+  transition: 0.2s ease-in;
 }
 
 .newsImg {
   width: 100%;
   height: 200px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 h4 {
   font-size: 16;
+  background-color: aliceblue;
 }
 p {
   font-size: 14;
+  background-color: aliceblue;
+}
+
+.card {
+  text-decoration: none;
+  color: black;
 }

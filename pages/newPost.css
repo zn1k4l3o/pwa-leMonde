@@ -1,0 +1,21 @@
+section {
+  width: 900px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+label {
+  font-size: 18px;
+}
+
+.textInput {
+  font-size: 16px;
+  max-width: 400px;
+  width: 50%;
+}
+
+textarea {
+  height: 200px;
+}

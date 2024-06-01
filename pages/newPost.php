@@ -11,8 +11,6 @@ if (isset($_POST['title']))
     $long    = $_POST['longDescription'];
     $section = $_POST['section'];
 
-    //$photo = null;
-    //$type  = null;
     $targetPhotoDir = null;
     if ($_FILES != null)
     {
@@ -20,24 +18,14 @@ if (isset($_POST['title']))
 
         if (isset($file))
         {
-
-            //$image = file_get_contents($_FILES['photo']['tmp_name']);
-
-            //$image_name = addslashes($_FILES['photo']['name']);
-
             $image_size = getimagesize($_FILES['photo']['tmp_name']);
 
             if ($image_size == FALSE)
                 echo "That's not an image.";
             else
             {
-                /*
-                $photo = $image;
-                $type  = $_FILES['photo']['type'];
-                */
                 $targetPhotoDir = UPLPATH . $_FILES['photo']['name'];
                 move_uploaded_file($_FILES['photo']['tmp_name'], "../$targetPhotoDir");
-
             }
         }
     }
@@ -53,33 +41,49 @@ if (isset($_POST['title']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New post</title>
+    <link rel="stylesheet" href="../globals.css">
+    <link rel="stylesheet" href="./newPost.css">
 </head>
 
 <body>
-    <form enctype="multipart/form-data" action="newPost.php" method="POST">
-        <label for="title">Title</label>
-        <br />
-        <input name="title" required />
-        <br />
-        <label for="photo">Image</label>
-        <br />
-        <input name="photo" type="file" />
-        <br />
-        <label for="shortDescription">Short description</label>
-        <br />
-        <input name="shortDescription" type="text" required />
-        <br />
-        <label for="longDescription">Long description</label>
-        <br />
-        <textarea name="longDescription" required></textarea>
-        <br />
-        <select name="section" required>
-            <option value="Politics">Politics</option>
-            <option value="Sport">Sport</option>
-            <option value="Administration">Administration</option>
-        </select>
-        <input name="submit" type="submit" value="Post" />
-    </form>
+    <header>
+        <div class="top">
+            <img src="../images/leMondeLogo.jpg" alt="Le Monde" title="Le Monde" class="headerPhoto">
+        </div>
+        <nav>
+            <a href="../index.php" class="link">HOME</a>
+            <a href="../index.php#politique" class="link">POLITIQUE</a>
+            <a href="../index.php#sport" class="link">SPORT</a>
+            <a href="./administration.php" class="link">ADMINISTRACIJA</a>
+        </nav>
+    </header>
+    <section>
+        <form enctype="multipart/form-data" action="newPost.php" method="POST">
+            <label for="title">Title</label>
+            <br />
+            <input class="textInput" name="title" required />
+            <br />
+            <label for="photo">Image</label>
+            <br />
+            <input  class="textInput"name="photo" type="file" />
+            <br />
+            <label for="shortDescription">Short description</label>
+            <br />
+            <input class="textInput" name="shortDescription" type="text" required />
+            <br />
+            <label for="longDescription">Long description</label>
+            <br />
+            <textarea class="textInput" name="longDescription" required></textarea>
+            <br />
+            <select name="section" required>
+                <option value="Politics">Politics</option>
+                <option value="Sport">Sport</option>
+                <option value="Administration">Administration</option>
+            </select>
+            <input name="submit" type="submit" value="Post" />
+        </form>
+    </section>
+
 </body>
 
 </html>
