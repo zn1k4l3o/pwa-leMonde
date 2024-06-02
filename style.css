@@ -15,7 +15,7 @@ hr {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .news {
@@ -25,8 +25,9 @@ hr {
   flex-direction: column;
   border: 1px solid rgba(163, 163, 163, 0.73);
   box-shadow: 0px 2px 4px 2px rgba(163, 163, 163, 0.73);
-  margin-bottom: 16px;
+  margin: 0 10px 16px 10px;
   transition: 0.4s ease-in;
+  box-sizing: border-box;
 }
 
 .news:hover {

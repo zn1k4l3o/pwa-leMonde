@@ -4,12 +4,16 @@ define('UPLPATH', 'storage/images');
 ?>
 <?php
 $connection = mysqli_connect("localhost", "root", "", "lemonde") or die("No server connection!");
-$query               = "SELECT * FROM posts WHERE section='Politics'";
-$arrayPolitics       = mysqli_query($connection, $query);
-$query               = "SELECT * FROM posts WHERE section='Sports'";
-$arraySports         = mysqli_query($connection, $query);
-$query               = "SELECT * FROM posts WHERE section='Administration'";
-$arrayAdministration = mysqli_query($connection, $query);
+
+if (isset($_GET["id"]))
+{
+    $query = "DELETE FROM posts WHERE id=" . $_GET["id"];
+    mysqli_query($connection, $query);
+}
+$query         = "SELECT * FROM posts WHERE section='Politics'";
+$arrayPolitics = mysqli_query($connection, $query);
+$query         = "SELECT * FROM posts WHERE section='Sport'";
+$arraySports   = mysqli_query($connection, $query);
 ?>
 
 <!DOCTYPE html>
@@ -39,8 +43,7 @@ $arrayAdministration = mysqli_query($connection, $query);
         <h1>Svi članci</h1>
         <h2>Politika</h2>
         <?php
-        echo "<table>
-                <form method='POST'>";
+        echo "<table>";
         while ($row = mysqli_fetch_assoc($arrayPolitics))
         {
             $id             = $row["id"];
@@ -52,13 +55,16 @@ $arrayAdministration = mysqli_query($connection, $query);
 
             echo "
                 <tr>
-                    <td>$id</td>
-                    <td>$title</td>
-                    <td>$short</td>
-                    <td>$long</td>
-                    <td>$hasPhoto</td>
-                    <td>
-                    <input type='submit' name='$id' class='trash' value=''>
+                    <td class='tdId' >$id</td>
+                    <td class='tdTitle'>$title</td>
+                    <td class='tdShort'>$short</td>
+                    <td class='tdLong'>$long</td>
+                    <td class='tdPhoto'>$hasPhoto</td>
+                    <td class='tdTrash'>
+                        <a href='./administration.php?id=" . $id . "'>
+                            <div class='trash' >
+                            </div>
+                        </a>
                     </td>
                 </tr>";
         }
@@ -67,7 +73,32 @@ $arrayAdministration = mysqli_query($connection, $query);
         <br />
         <h2>Sport</h2>
         <?php
+        echo "<table>";
+        while ($row = mysqli_fetch_assoc($arraySports))
+        {
+            $id             = $row["id"];
+            $title          = $row['title'];
+            $short          = $row['shortDescription'];
+            $long           = $row['longDescription'];
+            $targetPhotoDir = $row['targetPhotoDir'];
+            $hasPhoto       = boolval($targetPhotoDir) ? 'true' : 'false';
 
+            echo "
+                <tr>
+                    <td class='tdId' >$id</td>
+                    <td class='tdTitle'>$title</td>
+                    <td class='tdShort'>$short</td>
+                    <td class='tdLong'>$long</td>
+                    <td class='tdPhoto'>$hasPhoto</td>
+                    <td class='tdTrash'>
+                        <a href='./administration.php?id=$id'>
+                            <div class='trash' >
+                            </div>
+                        </a>
+                    </td>
+                </tr>";
+        }
+        echo "</table>";
         ?>
     </section>
 </body>

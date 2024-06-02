@@ -16,3 +16,27 @@ section {
   margin: 0 auto;
   flex-direction: column;
 }
+
+.tdId {
+  width: 40px;
+}
+
+.tdTitle {
+  width: 15%;
+}
+
+.tdShort {
+  width: 30%;
+}
+
+.tdLong {
+  text-overflow: ellipsis;
+}
+
+.tdPhoto {
+  width: 60px;
+}
+
+.tdTrash {
+  width: 60px;
+}
