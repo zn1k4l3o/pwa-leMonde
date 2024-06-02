@@ -22,7 +22,7 @@ $article = mysqli_query($connection, $query);
         </div>
         <nav>
             <a href="../index.php" class="link">HOME</a>
-            <a href="../index.php#politique" class="link">POLITIQUE</a>
+            <a href="../index.php#politics" class="link">POLITIKA</a>
             <a href="../index.php#sport" class="link">SPORT</a>
             <a href="../index.php#administracija" class="link">ADMINISTRACIJA</a>
         </nav>
@@ -33,9 +33,12 @@ $article = mysqli_query($connection, $query);
         $title          = $row["title"];
         $targetPhotoDir = $row['targetPhotoDir'];
         $long           = $row['longDescription'];
-
         echo "<h1>$title<h1>";
-        echo "<img class='mainPhoto' src='../$targetPhotoDir' title='Article image' alt='Article image'/>";
+        if (boolval($targetPhotoDir))
+        {
+            echo "<img class='mainPhoto' src='../$targetPhotoDir' title='Article image' alt='Article image'/>";
+
+        }
         echo "<p>$long</p>";
         ?>
     </section>

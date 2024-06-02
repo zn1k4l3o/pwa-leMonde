@@ -12,22 +12,28 @@ if (isset($_POST['title']))
     $section = $_POST['section'];
 
     $targetPhotoDir = null;
-    if ($_FILES != null)
+    if ($_FILES != null && isset($_FILES['photo']))
     {
-        $file = $_FILES["photo"]["tmp_name"];
-
-        if (isset($file))
+        if ($_FILES['photo']['error'] != UPLOAD_ERR_NO_FILE)
         {
-            $image_size = getimagesize($_FILES['photo']['tmp_name']);
 
-            if ($image_size == FALSE)
-                echo "That's not an image.";
-            else
+            $file = $_FILES["photo"]["tmp_name"];
+
+            if (isset($file))
             {
-                $targetPhotoDir = UPLPATH . $_FILES['photo']['name'];
-                move_uploaded_file($_FILES['photo']['tmp_name'], "../$targetPhotoDir");
+                $image_size = getimagesize($_FILES['photo']['tmp_name']);
+
+                if ($image_size == FALSE)
+                    echo "That's not an image.";
+                else
+                {
+                    $targetPhotoDir = UPLPATH . $_FILES['photo']['name'];
+                    move_uploaded_file($_FILES['photo']['tmp_name'], "../$targetPhotoDir");
+                }
             }
+
         }
+
     }
 
     $query  = "INSERT INTO posts (title, shortDescription, longDescription, targetPhotoDir, section) VALUES ('$title', '$short', '$long', '$targetPhotoDir', '$section')";
@@ -52,7 +58,7 @@ if (isset($_POST['title']))
         </div>
         <nav>
             <a href="../index.php" class="link">HOME</a>
-            <a href="../index.php#politique" class="link">POLITIQUE</a>
+            <a href="../index.php#politique" class="link">POLITIKA</a>
             <a href="../index.php#sport" class="link">SPORT</a>
             <a href="./administration.php" class="link">ADMINISTRACIJA</a>
         </nav>
@@ -65,7 +71,7 @@ if (isset($_POST['title']))
             <br />
             <label for="photo">Image</label>
             <br />
-            <input  class="textInput"name="photo" type="file" />
+            <input class="textInput" name="photo" type="file" />
             <br />
             <label for="shortDescription">Short description</label>
             <br />
@@ -78,7 +84,6 @@ if (isset($_POST['title']))
             <select name="section" required>
                 <option value="Politics">Politics</option>
                 <option value="Sport">Sport</option>
-                <option value="Administration">Administration</option>
             </select>
             <input name="submit" type="submit" value="Post" />
         </form>

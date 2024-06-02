@@ -15,12 +15,12 @@ hr {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .news {
-  width: 260px;
-  height: 340px;
+  width: 280px;
+  height: 360px;
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(163, 163, 163, 0.73);
@@ -30,7 +30,7 @@ hr {
 }
 
 .news:hover {
-  transform: scale(100.5%) translateY(-4px);
+  transform: scale(102%) translateY(-4px);
   transition: 0.2s ease-in;
 }
 

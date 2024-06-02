@@ -1,0 +1,18 @@
+.trash {
+  background-image: url("../images/trash.svg");
+  background-size: cover;
+  width: 32px;
+  height: 32px;
+  border: none;
+}
+
+table {
+  width: 100%;
+}
+
+section {
+  width: 900px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+}

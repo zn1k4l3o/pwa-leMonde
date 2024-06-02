@@ -4,12 +4,10 @@ define('UPLPATH', 'storage/images');
 ?>
 <?php
 $connection = mysqli_connect("localhost", "root", "", "lemonde") or die("No server connection!");
-$query               = "SELECT * FROM posts WHERE section='Politics'";
-$arrayPolitics       = mysqli_query($connection, $query);
-$query               = "SELECT * FROM posts WHERE section='Sports'";
-$arraySports         = mysqli_query($connection, $query);
-$query               = "SELECT * FROM posts WHERE section='Administration'";
-$arrayAdministration = mysqli_query($connection, $query);
+$query         = "SELECT * FROM posts WHERE section='Politics'";
+$arrayPolitics = mysqli_query($connection, $query);
+$query         = "SELECT * FROM posts WHERE section='Sport'";
+$arraySports   = mysqli_query($connection, $query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +27,7 @@ $arrayAdministration = mysqli_query($connection, $query);
         </div>
         <nav>
             <a href="index.php" class="link">HOME</a>
-            <a href="#politique" class="link">POLITIKA</a>
+            <a href="#politics" class="link">POLITIKA</a>
             <a href="#sport" class="link">SPORT</a>
             <a href="pages/administration.php" class="link">ADMINISTRACIJA</a>
             <a href="pages/newPost.php" class="link">NOVI ČLANAK</a>
@@ -37,7 +35,7 @@ $arrayAdministration = mysqli_query($connection, $query);
     </header>
     <section>
         <hr />
-        <h2 id="politique">Politique</h2>
+        <h2 id="politics">Politika</h2>
         <div class="articles">
             <?php
             while ($row = mysqli_fetch_assoc($arrayPolitics))
@@ -46,6 +44,10 @@ $arrayAdministration = mysqli_query($connection, $query);
                 $title          = $row['title'];
                 $short          = $row['shortDescription'];
                 $targetPhotoDir = $row['targetPhotoDir'];
+                if (boolval($targetPhotoDir) != true)
+                {
+                    $targetPhotoDir = './images/noImage.jpg';
+                }
 
                 echo "
                 <a class='card' href='./pages/article.php?id=" . $id . "' >
@@ -67,14 +69,23 @@ $arrayAdministration = mysqli_query($connection, $query);
             <?php
             while ($row = mysqli_fetch_assoc($arraySports))
             {
+                $id             = $row["id"];
                 $title          = $row['title'];
                 $short          = $row['shortDescription'];
                 $targetPhotoDir = $row['targetPhotoDir'];
-                echo "<article class='news'>
-                    <img src='$targetPhotoDir' class='newsImg'/>
-                    <h4>$title</h4>
-                    <p>$short</p>
-                </article>";
+                if (boolval($targetPhotoDir) != true)
+                {
+                    $targetPhotoDir = './images/noImage.jpg';
+                }
+
+                echo "
+                <a class='card' href='./pages/article.php?id=" . $id . "' >
+                    <article class='news'>
+                        <img src='$targetPhotoDir' class='newsImg'/>
+                        <h4>$title</h4>
+                        <p>$short</p>
+                    </article>
+                </a>";
             }
             ?>
         </div>
