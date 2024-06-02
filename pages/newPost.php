@@ -58,8 +58,8 @@ if (isset($_POST['title']))
         </div>
         <nav>
             <a href="../index.php" class="link">HOME</a>
-            <a href="../index.php#politique" class="link">POLITIKA</a>
-            <a href="../index.php#sport" class="link">SPORT</a>
+            <a href="./politics.php" class="link">POLITIKA</a>
+            <a href="./sports.php" class="link">SPORT</a>
             <a href="./administration.php" class="link">ADMINISTRACIJA</a>
         </nav>
     </header>

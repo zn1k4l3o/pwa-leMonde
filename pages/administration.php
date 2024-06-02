@@ -34,8 +34,8 @@ $arraySports   = mysqli_query($connection, $query);
         </div>
         <nav>
             <a href="../index.php" class="link">HOME</a>
-            <a href="../index.php#politique" class="link">POLITIKA</a>
-            <a href="../index.php#sport" class="link">SPORT</a>
+            <a href="./politics.php" class="link">POLITIKA</a>
+            <a href="./sports.php" class="link">SPORT</a>
             <a href="./newPost.php" class="link">NOVI ČLANAK</a>
         </nav>
     </header>
@@ -43,7 +43,15 @@ $arraySports   = mysqli_query($connection, $query);
         <h1>Svi članci</h1>
         <h2>Politika</h2>
         <?php
-        echo "<table>";
+        echo "<table>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Short description</th>
+                    <th>Long description</th>
+                    <th>Photo</th>
+                </tr>                    
+                ";
         while ($row = mysqli_fetch_assoc($arrayPolitics))
         {
             $id             = $row["id"];
@@ -52,6 +60,13 @@ $arraySports   = mysqli_query($connection, $query);
             $long           = $row['longDescription'];
             $targetPhotoDir = $row['targetPhotoDir'];
             $hasPhoto       = boolval($targetPhotoDir) ? 'true' : 'false';
+
+            if (strlen($title) > 20)
+                $title = mb_substr($title, 0, 20) . "...";
+            if (strlen($short) > 20)
+                $short = mb_substr($short, 0, 20) . "...";
+            if (strlen($long) > 23)
+                $long = mb_substr($long, 0, 20) . "...";
 
             echo "
                 <tr>
@@ -73,7 +88,15 @@ $arraySports   = mysqli_query($connection, $query);
         <br />
         <h2>Sport</h2>
         <?php
-        echo "<table>";
+        echo "<table>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Short description</th>
+                    <th>Long description</th>
+                    <th>Photo</th>
+                </tr>                    
+                ";
         while ($row = mysqli_fetch_assoc($arraySports))
         {
             $id             = $row["id"];
@@ -82,6 +105,13 @@ $arraySports   = mysqli_query($connection, $query);
             $long           = $row['longDescription'];
             $targetPhotoDir = $row['targetPhotoDir'];
             $hasPhoto       = boolval($targetPhotoDir) ? 'true' : 'false';
+
+            if (strlen($title) > 20)
+                $title = mb_substr($title, 0, 20) . "...";
+            if (strlen($short) > 20)
+                $short = mb_substr($short, 0, 20) . "...";
+            if (strlen($long) > 23)
+                $long = mb_substr($long, 0, 20) . "...";
 
             echo "
                 <tr>

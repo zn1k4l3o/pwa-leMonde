@@ -8,6 +8,20 @@
 
 table {
   width: 100%;
+  border-collapse: collapse;
+}
+tr {
+  line-height: 24px;
+  overflow: hidden;
+}
+th {
+  text-align: left;
+}
+td {
+  border: 1px solid gray;
+  border-right: none;
+  border-left: none;
+  padding: 4px 4px 4px 4px;
 }
 
 section {
@@ -34,9 +48,9 @@ section {
 }
 
 .tdPhoto {
-  width: 60px;
+  width: 70px;
 }
 
 .tdTrash {
-  width: 60px;
+  width: 40px;
 }

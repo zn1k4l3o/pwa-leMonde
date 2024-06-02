@@ -3,10 +3,21 @@ section {
   display: flex;
   margin: 0 auto;
   flex-direction: column;
+  background-color: white;
+  position: relative;
+  z-index: 0;
 }
 
 hr {
-  border-top: 1px solid grey;
+  width: 870px;
+  margin: 64px 15px 0 15px;
+  box-sizing: border-box;
+  border-top: 1px solid black;
+}
+
+h2 {
+  margin-left: 15px;
+  font-size: 22px;
 }
 
 .articles {
@@ -19,13 +30,13 @@ hr {
 }
 
 .news {
-  width: 280px;
+  width: 270px;
   height: 360px;
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(163, 163, 163, 0.73);
   box-shadow: 0px 2px 4px 2px rgba(163, 163, 163, 0.73);
-  margin: 0 10px 16px 10px;
+  margin: 0 15px 24px 15px;
   transition: 0.4s ease-in;
   box-sizing: border-box;
 }
@@ -43,11 +54,15 @@ hr {
 
 h4 {
   font-size: 16;
-  background-color: aliceblue;
+  background-color: white;
+  margin-left: 16px;
+  text-overflow: ellipsis;
 }
 p {
   font-size: 14;
-  background-color: aliceblue;
+  background-color: white;
+  margin-left: 16px;
+  text-overflow: ellipsis;
 }
 
 .card {

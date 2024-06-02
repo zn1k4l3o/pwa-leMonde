@@ -22,9 +22,10 @@ $article = mysqli_query($connection, $query);
         </div>
         <nav>
             <a href="../index.php" class="link">HOME</a>
-            <a href="../index.php#politics" class="link">POLITIKA</a>
-            <a href="../index.php#sport" class="link">SPORT</a>
-            <a href="../index.php#administracija" class="link">ADMINISTRACIJA</a>
+            <a href="./politics.php" class="link">POLITIKA</a>
+            <a href="./sports.php" class="link">SPORT</a>
+            <a href="./administration.php" class="link">ADMINISTRACIJA</a>
+            <a href="./newPost.php" class="link">NOVI ČLANAK</a>
         </nav>
     </header>
     <section>
