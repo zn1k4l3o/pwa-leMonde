@@ -31,6 +31,7 @@ $arraySports   = mysqli_query($connection, $query);
     <header>
         <div class="top">
             <img src="../images/leMondeLogo.jpg" alt="Le Monde" title="Le Monde" class="headerPhoto">
+            <a href="login.php"><img src="../images/blank_profile.png" class="profile" /></a>
         </div>
         <nav>
             <a href="../index.php" class="link">HOME</a>

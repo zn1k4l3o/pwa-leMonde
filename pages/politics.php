@@ -22,12 +22,27 @@ $arrayPolitics = mysqli_query($connection, $query);
     <header>
         <div class="top">
             <img src="../images/leMondeLogo.jpg" alt="Le Monde" title="Le Monde" class="headerPhoto">
+            <a href="login.php"><img src="../images/blank_profile.png" class="profile" /></a>
         </div>
         <nav>
             <a href="../index.php" class="link">HOME</a>
             <a href="./sports.php" class="link">SPORT</a>
-            <a href="./administration.php" class="link">ADMINISTRACIJA</a>
-            <a href="./newPost.php" class="link">NOVI ČLANAK</a>
+            <?php
+            session_start();
+            if (isset($_SESSION["level"]))
+            {
+                if ($_SESSION["level"] === 0)
+                {
+                    echo "<a href=\"administration.php\" class=\"link\">ADMINISTRACIJA</a>
+                      <a href=\"newPost.php\" class=\"link\">NOVI ČLANAK</a>";
+                }
+                else if ($_SESSION["level"] === 1)
+                {
+                    echo "<a href=\"newPost.php\" class=\"link\">NOVI ČLANAK</a>";
+                }
+            }
+            ?>
+
         </nav>
     </header>
     <section>

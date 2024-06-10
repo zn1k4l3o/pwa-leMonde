@@ -50,3 +50,12 @@ nav {
 .link:hover {
   color: darkblue;
 }
+
+.profile {
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  border-radius: 50%;
+}

@@ -24,13 +24,27 @@ $arraySports   = mysqli_query($connection, $query);
     <header>
         <div class="top">
             <img src="images/leMondeLogo.jpg" alt="Le Monde" title="Le Monde" class="headerPhoto">
+            <a href="pages/login.php"><img src="images/blank_profile.png" class="profile" /></a>
         </div>
         <nav>
             <a href="index.php" class="link">HOME</a>
             <a href="pages/sport.php" class="link">POLITIKA</a>
             <a href="pages/sports.php" class="link">SPORT</a>
-            <a href="pages/administration.php" class="link">ADMINISTRACIJA</a>
-            <a href="pages/newPost.php" class="link">NOVI ČLANAK</a>
+            <?php
+            if (isset($_SESSION["level"]))
+            {
+                if ($_SESSION["level"] === 0)
+                {
+                    echo "<a href=\"pages/administration.php\" class=\"link\">ADMINISTRACIJA</a>
+                      <a href=\"pages/newPost.php\" class=\"link\">NOVI ČLANAK</a>";
+                }
+                else if ($_SESSION["level"] === 1)
+                {
+                    echo "<a href=\"pages/newPost.php\" class=\"link\">NOVI ČLANAK</a>";
+                }
+            }
+            ?>
+
         </nav>
     </header>
     <section>
