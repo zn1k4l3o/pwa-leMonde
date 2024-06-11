@@ -4,9 +4,9 @@ define('UPLPATH', 'storage/images');
 ?>
 <?php
 $connection = mysqli_connect("localhost", "root", "", "lemonde") or die("No server connection!");
-$query         = "SELECT * FROM posts WHERE section='Politics' LIMIT 6";
+$query         = "SELECT * FROM posts WHERE section='Politics' LIMIT 3";
 $arrayPolitics = mysqli_query($connection, $query);
-$query         = "SELECT * FROM posts WHERE section='Sport' LIMIT 6";
+$query         = "SELECT * FROM posts WHERE section='Sport' LIMIT 3";
 $arraySports   = mysqli_query($connection, $query);
 ?>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ $arraySports   = mysqli_query($connection, $query);
         </div>
         <nav>
             <a href="index.php" class="link">HOME</a>
-            <a href="pages/sport.php" class="link">POLITIKA</a>
+            <a href="pages/politics.php" class="link">POLITIKA</a>
             <a href="pages/sports.php" class="link">SPORT</a>
             <?php
             if (isset($_SESSION["level"]))

@@ -10,10 +10,17 @@ if (isset($_GET["id"]))
     $query = "DELETE FROM posts WHERE id=" . $_GET["id"];
     mysqli_query($connection, $query);
 }
+else if (isset($_GET["userId"]))
+{
+    $query = "DELETE FROM users WHERE id=" . $_GET["userId"];
+    mysqli_query($connection, $query);
+}
 $query         = "SELECT * FROM posts WHERE section='Politics'";
 $arrayPolitics = mysqli_query($connection, $query);
 $query         = "SELECT * FROM posts WHERE section='Sport'";
 $arraySports   = mysqli_query($connection, $query);
+$query         = "SELECT * FROM users";
+$arrayUsers    = mysqli_query($connection, $query);
 ?>
 
 <!DOCTYPE html>
@@ -123,6 +130,47 @@ $arraySports   = mysqli_query($connection, $query);
                     <td class='tdPhoto'>$hasPhoto</td>
                     <td class='tdTrash'>
                         <a href='./administration.php?id=$id'>
+                            <div class='trash' >
+                            </div>
+                        </a>
+                    </td>
+                </tr>";
+        }
+        echo "</table>";
+        ?>
+        <h2>Korisnici</h2>
+        <?php
+        echo "<table>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Level</th>
+                </tr>                    
+                ";
+        while ($row = mysqli_fetch_assoc($arrayUsers))
+        {
+            $id       = $row["id"];
+            $username = $row['username'];
+            $email    = $row['email'];
+            $level    = $row['level'];
+
+            /*
+            if (strlen($title) > 20)
+                $title = mb_substr($title, 0, 20) . "...";
+            if (strlen($short) > 20)
+                $short = mb_substr($short, 0, 20) . "...";
+            if (strlen($long) > 23)
+                $long = mb_substr($long, 0, 20) . "...";
+            */
+            echo "
+                <tr>
+                    <td class='tdId' >$id</td>
+                    <td class='tdTitle'>$username</td>
+                    <td class='tdShort'>$email</td>
+                    <td class='tdLong'>$level</td>
+                    <td class='tdTrash'>
+                        <a href='./administration.php?userId=$id'>
                             <div class='trash' >
                             </div>
                         </a>

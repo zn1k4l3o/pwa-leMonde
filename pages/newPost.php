@@ -3,6 +3,7 @@ include '../connect.php';
 define('UPLPATH', 'storage/images/');
 ?>
 <?php
+session_start();
 if (isset($_POST['title']))
 {
     $konekcija = mysqli_connect("localhost", "root", "", "lemonde") or die("Nema konekcije na server!");
@@ -36,7 +37,7 @@ if (isset($_POST['title']))
 
     }
 
-    $query  = "INSERT INTO posts (title, shortDescription, longDescription, targetPhotoDir, section) VALUES ('$title', '$short', '$long', '$targetPhotoDir', '$section')";
+    $query  = "INSERT INTO posts (title, shortDescription, longDescription, targetPhotoDir, section, userId) VALUES ('$title', '$short', '$long', '$targetPhotoDir', '$section', " . $_SESSION["id"] . ")";
     $result = mysqli_query($konekcija, $query);
 }
 ?>

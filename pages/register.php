@@ -7,6 +7,10 @@
     <title>Le Monde</title>
     <link rel="stylesheet" href="../globals.css">
     <link rel="stylesheet" href="login.css">
+    <script type="text/javascript" src="jquery-1.11.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="../js/form-validation-login.js"></script>
 </head>
 
 <body>
@@ -16,7 +20,7 @@
         </div>
         <nav>
             <a href="../index.php" class="link">HOME</a>
-            <a href="sport.php" class="link">POLITIKA</a>
+            <a href="politics.php" class="link">POLITIKA</a>
             <a href="sports.php" class="link">SPORT</a>
             <?php
             session_start();
@@ -37,7 +41,7 @@
         </nav>
     </header>
     <section class="middle">
-        <form action="login.php" method="POST">
+        <form action="login.php" method="POST" name="registration">
             <label for="username">
                 Korisničko ime
             </label>
@@ -75,7 +79,7 @@
             <input type="submit" value="Registriraj se" />
         </form>
         <a href="login.php">
-            <button>Ulogiraj se</button>
+            <button class="switch">Ulogiraj se</button>
         </a>
     </section>
 </body>

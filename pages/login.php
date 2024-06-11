@@ -31,7 +31,7 @@ else if (isset($_POST["username"]))
 {
     $username = $_POST["username"];
     $password = $_POST["password"];
-    $query    = "SELECT username, password, level FROM users WHERE username=?";
+    $query    = "SELECT username, password, level, id FROM users WHERE username=?";
     $stmt     = mysqli_stmt_init($konekcija);
     if (mysqli_stmt_prepare($stmt, $query))
     {
@@ -40,18 +40,28 @@ else if (isset($_POST["username"]))
         mysqli_stmt_store_result($stmt);
     }
 
-    mysqli_stmt_bind_result($stmt, $usernameDB, $passwordDB, $level);
+    mysqli_stmt_bind_result($stmt, $usernameDB, $passwordDB, $level, $id);
     mysqli_stmt_fetch($stmt);
     if (password_verify($password, $passwordDB))
     {
         $_SESSION["username"] = $username;
         $_SESSION["level"]    = $level;
+        $_SESSION["id"]       = $id;
+    }
+    else
+    {
+        signOut();
     }
 }
 if (isset($_POST["signOut"]))
 {
+    signOut();
+}
+function signOut()
+{
     $_SESSION["username"] = null;
     $_SESSION["level"]    = null;
+    $_SESSION["id"]       = null;
 }
 ?>
 
@@ -62,6 +72,10 @@ if (isset($_POST["signOut"]))
     <title>Le Monde</title>
     <link rel="stylesheet" href="../globals.css">
     <link rel="stylesheet" href="login.css">
+    <script type="text/javascript" src="jquery-1.11.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="../js/form-validation-login.js"></script>
 </head>
 
 <body>
@@ -91,23 +105,25 @@ if (isset($_POST["signOut"]))
         </nav>
     </header>
     <section class="middle">
-        <form action="login.php" method="POST">
+        <form action="login.php" method="POST" name="login">
             <label for="username">
                 Korisničko ime
             </label>
             <br />
             <input type="text" name="username" id="username" required />
+            <span id="usernameInfo"></span>
             <br />
             <label for="password">
                 Lozinka
             </label>
             <br />
             <input type="password" name="password" id="password" required />
+            <span id="passwordInfo"></span>
             <br />
             <input type="submit" value="Prijavi se" />
         </form>
         <a href="register.php">
-            <button>Registriraj se</button>
+            <button class="switch">Registriraj se</button>
         </a>
         <form action="login.php" method="POST">
             <input type="submit" name="signOut" value="Odjavi se">
