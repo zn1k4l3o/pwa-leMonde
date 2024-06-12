@@ -50,6 +50,10 @@ if (isset($_POST['title']))
     <title>New post</title>
     <link rel="stylesheet" href="../globals.css">
     <link rel="stylesheet" href="./newPost.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../images/favicon/site.webmanifest">
 </head>
 
 <body>
@@ -60,10 +64,9 @@ if (isset($_POST['title']))
         </div>
         <nav>
             <a href="../index.php" class="link">HOME</a>
-            <a href="./politics.php" class="link">POLITIKA</a>
+            <a href="./general.php" class="link">OPĆENITO</a>
             <a href="./sports.php" class="link">SPORT</a>
             <?php
-            session_start();
             if (isset($_SESSION["level"]))
             {
                 if ($_SESSION["level"] === 0)
@@ -94,7 +97,7 @@ if (isset($_POST['title']))
             <textarea class="textInput" name="longDescription" required></textarea>
             <br />
             <select name="section" required>
-                <option value="Politics">Politics</option>
+                <option value="General">General</option>
                 <option value="Sport">Sport</option>
             </select>
             <input name="submit" type="submit" value="Post" />

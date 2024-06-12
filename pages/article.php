@@ -13,6 +13,10 @@ $article = mysqli_query($connection, $query);
     <title>Le Monde</title>
     <link rel="stylesheet" href="../globals.css">
     <link rel="stylesheet" href="./article.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../images/favicon/site.webmanifest">
 </head>
 
 <body>
@@ -23,7 +27,7 @@ $article = mysqli_query($connection, $query);
         </div>
         <nav>
             <a href="../index.php" class="link">HOME</a>
-            <a href="./politics.php" class="link">POLITIKA</a>
+            <a href="./general.php" class="link">OPĆENITO</a>
             <a href="./sports.php" class="link">SPORT</a>
             <?php
             if (isset($_SESSION["level"]))

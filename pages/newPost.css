@@ -5,6 +5,7 @@ section {
   padding: 16px 15px 64px 15px;
   flex-direction: column;
   background-color: white;
+  justify-content: center;
 }
 
 label {
@@ -20,4 +21,3 @@ label {
 textarea {
   height: 200px;
 }
-

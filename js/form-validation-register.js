@@ -3,7 +3,7 @@ $(function () {
     rules: {
       username: {
         required: true,
-        maxlength: 5,
+        maxlength: 50,
       },
       password: {
         required: true,
@@ -32,8 +32,8 @@ $(function () {
         equalTo: "Lozinke trebaju biti iste",
       },
       email: {
-          required: "Potrebno je unesti email",
-          email:"Email nije dobrog oblika"
+        required: "Potrebno je unesti email",
+        email: "Email nije dobrog oblika",
       },
     },
 

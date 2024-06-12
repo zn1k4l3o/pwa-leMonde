@@ -15,12 +15,12 @@ else if (isset($_GET["userId"]))
     $query = "DELETE FROM users WHERE id=" . $_GET["userId"];
     mysqli_query($connection, $query);
 }
-$query         = "SELECT * FROM posts WHERE section='Politics'";
-$arrayPolitics = mysqli_query($connection, $query);
-$query         = "SELECT * FROM posts WHERE section='Sport'";
-$arraySports   = mysqli_query($connection, $query);
-$query         = "SELECT * FROM users";
-$arrayUsers    = mysqli_query($connection, $query);
+$query        = "SELECT * FROM posts WHERE section='General'";
+$arrayGeneral = mysqli_query($connection, $query);
+$query        = "SELECT * FROM posts WHERE section='Sport'";
+$arraySports  = mysqli_query($connection, $query);
+$query        = "SELECT * FROM users";
+$arrayUsers   = mysqli_query($connection, $query);
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +32,10 @@ $arrayUsers    = mysqli_query($connection, $query);
     <title>Le Monde administration</title>
     <link rel="stylesheet" href="../globals.css">
     <link rel="stylesheet" href="./administration.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../images/favicon/site.webmanifest">
 </head>
 
 <body>
@@ -42,14 +46,14 @@ $arrayUsers    = mysqli_query($connection, $query);
         </div>
         <nav>
             <a href="../index.php" class="link">HOME</a>
-            <a href="./politics.php" class="link">POLITIKA</a>
+            <a href="./general.php" class="link">OPĆENITO</a>
             <a href="./sports.php" class="link">SPORT</a>
             <a href="./newPost.php" class="link">NOVI ČLANAK</a>
         </nav>
     </header>
     <section>
         <h1>Svi članci</h1>
-        <h2>Politika</h2>
+        <h2>Općenito</h2>
         <?php
         echo "<table>
                 <tr>
@@ -60,7 +64,7 @@ $arrayUsers    = mysqli_query($connection, $query);
                     <th>Photo</th>
                 </tr>                    
                 ";
-        while ($row = mysqli_fetch_assoc($arrayPolitics))
+        while ($row = mysqli_fetch_assoc($arrayGeneral))
         {
             $id             = $row["id"];
             $title          = $row['title'];

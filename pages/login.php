@@ -22,7 +22,7 @@ if (isset($_POST["email"]))
         }
         catch (Exception $e)
         {
-            echo "Nije moguće unesti novog korisnika u bazu";
+            echo "<script>alert('To korisničko ime već postoji!');</script>";
         }
     }
 
@@ -51,6 +51,7 @@ else if (isset($_POST["username"]))
     else
     {
         signOut();
+        echo "<script>alert('Netočno korisničko ime ili lozinka!');</script>";
     }
 }
 if (isset($_POST["signOut"]))
@@ -76,6 +77,10 @@ function signOut()
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="../js/form-validation-login.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../images/favicon/site.webmanifest">
 </head>
 
 <body>
@@ -85,7 +90,7 @@ function signOut()
         </div>
         <nav>
             <a href="../index.php" class="link">HOME</a>
-            <a href="politics.php" class="link">POLITIKA</a>
+            <a href="general.php" class="link">OPĆENITO</a>
             <a href="sports.php" class="link">SPORT</a>
             <?php
             if (isset($_SESSION["level"]))
@@ -110,14 +115,14 @@ function signOut()
                 Korisničko ime
             </label>
             <br />
-            <input type="text" name="username" id="username" required />
+            <input type="text" name="username" id="username" />
             <span id="usernameInfo"></span>
             <br />
             <label for="password">
                 Lozinka
             </label>
             <br />
-            <input type="password" name="password" id="password" required />
+            <input type="password" name="password" id="password" />
             <span id="passwordInfo"></span>
             <br />
             <input type="submit" value="Prijavi se" />

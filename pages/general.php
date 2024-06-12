@@ -4,8 +4,8 @@ define('UPLPATH', 'storage/images');
 ?>
 <?php
 $connection = mysqli_connect("localhost", "root", "", "lemonde") or die("No server connection!");
-$query         = "SELECT * FROM posts WHERE section='Politics'";
-$arrayPolitics = mysqli_query($connection, $query);
+$query        = "SELECT * FROM posts WHERE section='General'";
+$arrayGeneral = mysqli_query($connection, $query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +16,10 @@ $arrayPolitics = mysqli_query($connection, $query);
     <title>Le Monde</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../globals.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../images/favicon/site.webmanifest">
 </head>
 
 <body>
@@ -47,10 +51,10 @@ $arrayPolitics = mysqli_query($connection, $query);
     </header>
     <section>
         <hr />
-        <h2 id="politics">Politika</h2>
+        <h2 id="general">Općenito</h2>
         <div class="articles">
             <?php
-            while ($row = mysqli_fetch_assoc($arrayPolitics))
+            while ($row = mysqli_fetch_assoc($arrayGeneral))
             {
                 $id             = $row["id"];
                 $title          = $row['title'];
@@ -62,7 +66,7 @@ $arrayPolitics = mysqli_query($connection, $query);
                 }
 
                 echo "
-                <a class='card' href='./pages/article.php?id=" . $id . "' >
+                <a class='card' href='./article.php?id=" . $id . "' >
                     <article class='news'>
                         <img src='../$targetPhotoDir' class='newsImg'/>
                         <h4>$title</h4>
