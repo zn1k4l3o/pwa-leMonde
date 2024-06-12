@@ -67,7 +67,7 @@ $arraySports = mysqli_query($connection, $query);
                 }
 
                 echo "
-                <a class='card' href='./pages/article.php?id=" . $id . "' >
+                <a class='card' href='./article.php?id=" . $id . "' >
                     <article class='news'>
                         <img src='../$targetPhotoDir' class='newsImg'/>
                         <h4>$title</h4>
